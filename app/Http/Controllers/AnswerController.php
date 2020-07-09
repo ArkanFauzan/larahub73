@@ -14,7 +14,7 @@ class AnswerController extends Controller
         $new_answer->question_id = $id;
         $new_answer->user_id = Auth::user()->id;
         $new_answer->save();
-        // dd($new_answer);
+        
         $nampung = $new_answer['question_id'];
         if($nampung){
             return redirect("/questions/$nampung");

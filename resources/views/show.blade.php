@@ -66,12 +66,12 @@
             <div class="card mb-4" style="width: 100%;">
                 <div class="card-body">
                     <p class="card-text" style="display: inline">{!! $jawab->content !!}</p>
-                    <p>Answered By {{$jawab->user->name}}  </p>
+                    <p>Answered By: {{$jawab->user->name}}  </p>
                     <p>Comments:</p>
 
                     {{-- menampilkan comment2 untuk setiap jawaban --}}
                     @foreach ($jawab->comment as $comment)
-                        <p>{{$comment->user->name}} : {{$comment->content}}</p>
+                        <p class="my-0 border-top border-bottom">{{$comment->user->name}} : {{$comment->content}}</p>
                     @endforeach
 
                     <form class="form" action="/comment/answer/{{$jawab->id}}" method="post">
@@ -79,10 +79,10 @@
                         <div class="form-row d-flex justify-content-end">
                             
                             <div class="col-7">
-                                <input type="text" class="form-control" name="comment" placeholder="Tambahkan Komentar">
+                                <input type="text" class="form-control mt-4" name="comment" placeholder="Tambahkan Komentar">
                             </div>
                             <div class="col-1">
-                                <button type="submit" class="btn btn-primary" style=""><i class="fas fa-paper-plane"></i></button>
+                                <button type="submit" class="btn btn-primary mt-4" style=""><i class="fas fa-paper-plane"></i></button>
                             </div>
                         </div>
                     </form>
@@ -96,6 +96,7 @@
         @csrf
         <div class="form-group">
         <textarea class="form-control my-editor" name="content">{!! old('content', $content ?? '') !!}</textarea>
+        <input type="hidden" name="question_id" value="{{$question->id}}">
         </div>
         <button type="submit" class="btn btn-primary" style="">Submit</button>
     </form>
