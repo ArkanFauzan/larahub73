@@ -3,15 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
-class Answer extends Model
+class Comment extends Model
 {
+    protected $table = 'answer_comments';
+    protected $guarded = [];
+
     public function user(){
         return $this->belongsTo('App\User');
-    }
-
-    public function comment(){
-        return $this->hasMany('App\Comment');
     }
 }

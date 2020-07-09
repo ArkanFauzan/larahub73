@@ -26,14 +26,30 @@ class QuestionController extends Controller
         $new_question->content = $request['content'];
         $new_question->tag = $request['tag'];
         $new_question->user_id = Auth::user()->id;
+        
+        // $tagArr = explode(', ', $request->tag);
+        
+        // $tagMulti = [];
+        // foreach ($tagArr as $strTag){
+        //     $tagArrAscc['tag_name'] = $strTag;
+        //     $tagMulti[] = $tagArrAscc;
+        // }
 
+        // foreach ($tagMulti as $tagCheck){
+        //     $tag = Tag::firstOrCreate($tagCheck);
+        //     $new_question->tags()->attach($tag->id);
+            
+
+        // }
+        // dd($new_question);
         $new_question->save();
-
         return redirect('questions/index');
+
+
     }
 
     public function show($id){
-        $answers = Answer::find_answer($id);
+        $answers = Answer::all()->where('question_id','=',$id);
         $question = Question::find($id);
         // dd($pertanyaan->isi);
         return view('show', compact('question', 'id','answers'));
