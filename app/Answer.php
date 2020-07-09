@@ -12,6 +12,10 @@ class Answer extends Model
     }
 
     public function comment(){
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('App\CommentAnswer');
+    }
+
+    public function question(){
+        return $this->belongsTo('App\Question');
     }
 }

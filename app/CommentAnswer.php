@@ -3,18 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-
-class Question extends Model
+class CommentAnswer extends Model
 {
+    protected $table = 'answer_comments';
     protected $guarded = [];
 
     public function user(){
         return $this->belongsTo('App\User');
     }
 
-    public function comment(){
-        return $this->hasMany('App\CommentQuestion');
+    public function answer(){
+        return $this->belongsTo('App\Answer');
     }
 }

@@ -5,17 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-use App\Comment;
+use App\CommentAnswer;
 
-class CommentController extends Controller
+class CommentAnswerController extends Controller
 {
     public function store($id, Request $request){
-        $comments = Comment::create([
+        $comments = CommentAnswer::create([
             'content'=>$request['comment'],
             'answer_id'=>$id,
             'user_id'=>Auth::user()->id,
         ]);
 
-        return redirect("/questions/$id");
+        return redirect("/questions/".$comments->answer->question->id);
     }
 }

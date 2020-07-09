@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class CommentQuestion extends Model
 {
-    protected $table = 'answer_comments';
+    protected $table = 'question_comments';
     protected $guarded = [];
 
     public function user(){
