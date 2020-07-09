@@ -189,7 +189,11 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <!-- Left Side Of Navbar -->
                                 <ul class="navbar-nav mr-auto">
-            
+                                  <li class="nav-item">
+                                    <button type="button" class="btn btn-primary">
+                                      Poin Reputasi <span class="badge badge-light">20</span>
+                                    </button>
+                                  </li>
                                 </ul>
             
                                 <!-- Right Side Of Navbar -->

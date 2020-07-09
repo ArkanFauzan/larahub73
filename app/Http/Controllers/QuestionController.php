@@ -23,10 +23,26 @@ class QuestionController extends Controller
         $new_question->title = $request['title'];
         $new_question->content = $request['content'];
         $new_question->tag = $request['tag'];
+        
+        // $tagArr = explode(', ', $request->tag);
+        
+        // $tagMulti = [];
+        // foreach ($tagArr as $strTag){
+        //     $tagArrAscc['tag_name'] = $strTag;
+        //     $tagMulti[] = $tagArrAscc;
+        // }
 
+        // foreach ($tagMulti as $tagCheck){
+        //     $tag = Tag::firstOrCreate($tagCheck);
+        //     $new_question->tags()->attach($tag->id);
+            
+
+        // }
+        // dd($new_question);
         $new_question->save();
-
         return redirect('questions/index');
+
+
     }
 
     public function show($id){
@@ -46,6 +62,7 @@ class QuestionController extends Controller
         $question = Question::find($id);
         $question->title = $request['title'];
         $question->content = $request['content'];
+        $question->tag = $request['tag'];
 
         $question->save();
         return redirect('/questions/index');
