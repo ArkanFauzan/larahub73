@@ -9,6 +9,7 @@ class CommentAnswer extends Model
     protected $table = 'answer_comments';
     protected $guarded = [];
 
+    // untuk mengakses tabel user
     public function user(){
         return $this->belongsTo('App\User');
     }

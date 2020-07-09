@@ -10,6 +10,7 @@ class Question extends Model
 {
     protected $guarded = [];
 
+    // untuk mengakses tabel user
     public function user(){
         return $this->belongsTo('App\User');
     }

@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 class Answer extends Model
-{
+{   
+    // untuk mengakses tabel user
     public function user(){
         return $this->belongsTo('App\User');
     }

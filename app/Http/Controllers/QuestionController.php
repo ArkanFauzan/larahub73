@@ -3,15 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\support\Facades\Auth;
 use App\Question;
 use App\Answer;
+use App\User;
 
-use Illuminate\support\Facades\Auth;
+// untuk firstOrCreate tabel point untuk user terkait
+// ditaruh di index
+use App\Point;
+
 
 class QuestionController extends Controller
 {
     public function index(){
         $questions = Question::all();
+        
+        // firstOrCreate table point for user who had login
+        if(Auth::user()){
+            $point = Point::firstOrCreate([
+                'user_id'=> Auth::user()->id,
+                'point'=>0,
+            ]);
+        }
+
         // var_dump($questions);
         return view('index', compact('questions'));
     }

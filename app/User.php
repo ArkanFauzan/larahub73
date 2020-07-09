@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // UNTUK MENGAKSES POINT
+    public function point(){
+        return $this->hasOne('App\Point');
+    }
 }
