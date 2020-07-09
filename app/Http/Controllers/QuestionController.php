@@ -62,6 +62,7 @@ class QuestionController extends Controller
         $question = Question::find($id);
         $question->title = $request['title'];
         $question->content = $request['content'];
+        $question->tag = $request['tag'];
 
         $question->save();
         return redirect('/questions/index');
