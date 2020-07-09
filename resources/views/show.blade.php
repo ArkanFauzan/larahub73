@@ -23,11 +23,7 @@
                         </form>
                     </div>
                     <div class="col-8">
-<<<<<<< HEAD
                         <h5 class="card-title mb-4">Posted by: {{$question->user->name}} </h5>
-=======
-                        <h5 class="card-title mb-4">Posted by: </h5>
->>>>>>> df4bfabcc63cedb407cb12372d3d5ebb985ee2ec
                         <p class="card-text">Content: <br>{!!$question->content!!}</p>
                         <?php 
                             $misah = explode(", ", $question->tag);
