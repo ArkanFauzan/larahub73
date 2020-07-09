@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Question;
 use App\Answer;
 
+use Illuminate\support\Facades\Auth;
+
 class QuestionController extends Controller
 {
     public function index(){
@@ -23,6 +25,7 @@ class QuestionController extends Controller
         $new_question->title = $request['title'];
         $new_question->content = $request['content'];
         $new_question->tag = $request['tag'];
+        $new_question->user_id = Auth::user()->id;
 
         $new_question->save();
 
