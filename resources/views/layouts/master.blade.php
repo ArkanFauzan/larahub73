@@ -7,6 +7,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <!-- Link untuk menambah icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -39,7 +42,7 @@
         <div id="wrapper">
 
             <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 <!-- Sidebar - Brand -->
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -63,12 +66,12 @@
                 <hr class="sidebar-divider">
           
                 <!-- Heading -->
-                <div class="sidebar-heading">
+                <!-- <div class="sidebar-heading">
                   Interface
-                </div>
+                </div> -->
           
                 <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Components</span>
@@ -80,10 +83,10 @@
                       <a class="collapse-item" href="cards.html">Cards</a>
                     </div>
                   </div>
-                </li>
+                </li> -->
           
                 <!-- Nav Item - Utilities Collapse Menu -->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Utilities</span>
@@ -97,57 +100,72 @@
                       <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                   </div>
-                </li>
+                </li> -->
           
                 <!-- Divider -->
-                <hr class="sidebar-divider">
+                <!-- <hr class="sidebar-divider"> -->
           
                 <!-- Heading -->
-                <div class="sidebar-heading">
-                  Addons
-                </div>
+                <!-- <div class="sidebar-heading">
+                  MENU
+                </div> -->
           
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item active">
                   <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Forums</span>
                   </a>
                   <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                      <h6 class="collapse-header">Login Screens:</h6>
+                      <!-- <h6 class="collapse-header">Login Screens:</h6>
                       <a class="collapse-item" href="login.html">Login</a>
                       <a class="collapse-item" href="register.html">Register</a>
                       <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                       <div class="collapse-divider"></div>
-                      <h6 class="collapse-header">Other Pages:</h6>
+                      <h6 class="collapse-header">Other Pages:</h6> -->
+                      
+                      <a class="collapse-item active" href="blank.html">Questions & Answers</a>
                       <a class="collapse-item" href="404.html">404 Page</a>
-                      <a class="collapse-item active" href="blank.html">Blank Page</a>
                     </div>
                   </div>
                 </li>
           
                 <!-- Nav Item - Charts -->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
-                </li>
+                </li> -->
           
-                <!-- Nav Item - Tables -->
+                <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
-                  <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
+                  <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Teams</span>
+                  </a>
+                  <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                      <!-- <h6 class="collapse-header">Login Screens:</h6>
+                      <a class="collapse-item" href="login.html">Login</a>
+                      <a class="collapse-item" href="register.html">Register</a>
+                      <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                      <div class="collapse-divider"></div>
+                      <h6 class="collapse-header">Other Pages:</h6> -->
+                      <a class="collapse-item" href="#">Arkan</a>
+                      <a class="collapse-item" href="#">Arifandy</a>
+                      <a class="collapse-item" href="#">Jatayu</a>
+                    </div>
+                  </div>
                 </li>
           
                 <!-- Divider -->
-                <hr class="sidebar-divider d-none d-md-block">
+                <!-- <hr class="sidebar-divider d-none d-md-block"> -->
           
                 <!-- Sidebar Toggler (Sidebar) -->
-                <div class="text-center d-none d-md-inline">
+                <!-- <div class="text-center d-none d-md-inline">
                   <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                </div>
+                </div> -->
           
             </ul>
             <!-- End of Sidebar -->
@@ -159,7 +177,7 @@
                 <div id="content">
 
                     <!-- Navbar-->
-                    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                    <nav class="navbar navbar-expand-md navbar-light bg-gradient-dark shadow-sm">
                         <div class="container">
                             {{-- <a class="navbar-brand" href="{{ url('/') }}">
                                 {{ config('app.name', 'Laravel') }}
@@ -179,15 +197,15 @@
                                 </ul>
             
                                 <!-- Right Side Of Navbar -->
-                                <ul class="navbar-nav ml-auto">
+                                <ul class="navbar-nav ml-auto ">
                                     <!-- Authentication Links -->
                                     @guest
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                            <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
                                         </li>
                                         @if (Route::has('register'))
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                                <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
                                             </li>
                                         @endif
                                     @else

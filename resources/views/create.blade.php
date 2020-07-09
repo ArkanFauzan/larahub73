@@ -14,7 +14,6 @@
 
       <label class="mt-4" for="isi">Tag</label>
       <input class="form-control" id="isi" name="tag" placeholder="Enter Tag (*Separate with comma, ex: Tag1, Tag2)">
-
       <label class="mt-4" for="isi">Content</label>
       <textarea class="form-control my-editor" id="isi" name="content">{!! old('content', $content ?? '') !!}</textarea>
 

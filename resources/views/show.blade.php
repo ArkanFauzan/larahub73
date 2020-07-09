@@ -23,7 +23,11 @@
                         </form>
                     </div>
                     <div class="col-8">
+<<<<<<< HEAD
                         <h5 class="card-title mb-4">Posted by: {{$question->user->name}} </h5>
+=======
+                        <h5 class="card-title mb-4">Posted by: </h5>
+>>>>>>> df4bfabcc63cedb407cb12372d3d5ebb985ee2ec
                         <p class="card-text">Content: <br>{!!$question->content!!}</p>
                         <?php 
                             $misah = explode(", ", $question->tag);
@@ -40,7 +44,7 @@
             </div>
     </div>
     <h4 class="mt-4 ml-4">Answers:</h4>
-    
+
     <div class="col">
         @foreach ($answers as $jawab)
         <div class="row ml-4" style="">
@@ -65,7 +69,6 @@
                             <div class="col-1">
                                 <button type="submit" class="btn btn-primary" style=""><i class="fas fa-paper-plane"></i></button>
                             </div>
-                            {{-- <input class="form-control" type="hidden" name="answer_id" value="{{$answer->id}}"> --}}
                         </div>
                     </form>
                 </div>
@@ -77,7 +80,6 @@
     <form action="/questions/{id}" method="post">
         @csrf
         <div class="form-group">
-        <input class="form-control" type="hidden" name="question_id" value="{{$question->id}}">
         <textarea class="form-control my-editor" name="content">{!! old('content', $content ?? '') !!}</textarea>
         </div>
         <button type="submit" class="btn btn-primary" style="">Submit</button>
