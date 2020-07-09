@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Question;
+use App\Answer;
 
 class QuestionController extends Controller
 {
@@ -21,6 +22,7 @@ class QuestionController extends Controller
         $new_question = new Question;
         $new_question->title = $request['title'];
         $new_question->content = $request['content'];
+        $new_question->tag = $request['tag'];
 
         $new_question->save();
 
@@ -28,10 +30,10 @@ class QuestionController extends Controller
     }
 
     public function show($id){
-        // $jawabans = JawabanModel::find($id);
+        $answers = Answer::find_answer($id);
         $question = Question::find($id);
         // dd($pertanyaan->isi);
-        return view('show', compact('question', 'id'));
+        return view('show', compact('question', 'id','answers'));
     }
 
     public function edit($id){
