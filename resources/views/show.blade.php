@@ -41,7 +41,7 @@
                 <div class="card-body">
                     <p>Comments:</p>
                     @foreach ($question->comment as $comment)
-                        <p>{{$comment->user->name}} : {{$comment->content}}</p>
+                        <p class="my-0 border-top border-bottom">{{$comment->user->name}} : {{$comment->content}}</p>
                     @endforeach
                     <form class="form" action="/comment/question/{{$question->id}}" method="post">
                         @csrf
