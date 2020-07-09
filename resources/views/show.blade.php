@@ -37,6 +37,25 @@
                         <p>Updated at: {{$question->updated_at}}</p>
                     </div>
                 </div>
+
+                <div class="card-body">
+                    <p>Comments:</p>
+                    @foreach ($question->comment as $comment)
+                        <p>{{$comment->user->name}} : {{$comment->content}}</p>
+                    @endforeach
+                    <form class="form" action="/comment/question/{{$question->id}}" method="post">
+                        @csrf
+                        <div class="form-row d-flex justify-content-end">
+                            
+                            <div class="col-7">
+                                <input type="text" class="form-control" name="comment" placeholder="Tambahkan Komentar">
+                            </div>
+                            <div class="col-1">
+                                <button type="submit" class="btn btn-primary" style=""><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
     </div>
     <h4 class="mt-4 ml-4">Answers:</h4>
@@ -55,7 +74,7 @@
                         <p>{{$comment->user->name}} : {{$comment->content}}</p>
                     @endforeach
 
-                    <form class="form" action="/comment/{{$jawab->id}}" method="post">
+                    <form class="form" action="/comment/answer/{{$jawab->id}}" method="post">
                         @csrf
                         <div class="form-row d-flex justify-content-end">
                             
@@ -73,7 +92,7 @@
         @endforeach
     </div>
     <h4 class="mt-4 ml-4">Berikan Jawaban Anda:</h4>
-    <form action="/questions/{id}" method="post">
+    <form action="/questions/{{$question->id}}" method="post">
         @csrf
         <div class="form-group">
         <textarea class="form-control my-editor" name="content">{!! old('content', $content ?? '') !!}</textarea>

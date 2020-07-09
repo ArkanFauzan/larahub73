@@ -33,7 +33,9 @@ Route::get('/questions/{id}', 'QuestionController@show');
 Route::post('/questions/{id}', 'AnswerController@store');
 Route::get('/questions/{id}/voteup', 'VoteController@voteup');
 Route::get('/questions/{id}/votedown', 'VoteController@votedown');
-Route::post('/comment/{id}', 'CommentController@store');
+
+Route::post('/comment/answer/{id}', 'CommentAnswerController@store');
+Route::post('/comment/question/{id}', 'CommentQuestionController@store');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
