@@ -31,3 +31,7 @@ Route::get('/questions/{id}/edit', 'QuestionController@edit');
 Route::delete('/questions/{id}', 'QuestionController@destroy');
 Route::get('/questions/{id}', 'QuestionController@show');
 Route::post('/questions/{id}', 'AnswerController@store');
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});

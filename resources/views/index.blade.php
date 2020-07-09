@@ -17,8 +17,8 @@
       @foreach ($questions as $qst)
       <tr>
         <th scope="row" style="width: 5%">{{$loop->iteration}}</th>
-        <td style="width: 20%">{{ $qst-> title }}</td>
-        <td>{{ $qst-> content }}</td>
+        <td style="width: 20%">{{ $qst->title }}</td>
+        <td>{!! $qst-> content !!}</td>
         <td style="width: 20%">
           <a class="btn btn-info" href="/questions/{{$qst->id}}" role="button">Detail</a>
           <a class="btn btn-warning" href="/questions/{{$qst->id}}/edit" role="button">Edit</a>

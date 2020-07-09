@@ -28,6 +28,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('/sbadmin2/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    @stack('script-head')
+
 </head>
 
 <body id="page-top">
@@ -252,7 +254,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{asset('/sbadmin2/js/sb-admin-2.min.js')}}"></script>
-
-</body>
-
+    @stack('script-body')
+  </body>
 </html>
