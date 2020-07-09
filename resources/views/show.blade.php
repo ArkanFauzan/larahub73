@@ -23,7 +23,7 @@
                         </form>
                     </div>
                     <div class="col-8">
-                        <h5 class="card-title mb-4">Posted by:  </h5>
+                        <h5 class="card-title mb-4">Posted by: </h5>
                         <p class="card-text">Content: <br>{!!$question->content!!}</p>
                         <?php 
                             $misah = explode(", ", $question->tag);
@@ -40,14 +40,14 @@
             </div>
     </div>
     <h4 class="mt-4 ml-4">Answers:</h4>
-    
+
     <div class="col">
         @foreach ($answers as $jawab)
         <div class="row ml-4" style="">
             <div class="card mb-4" style="width: 100%;">
                 <div class="card-body">
                     <p class="card-text" style="display: inline">{!! $jawab->content !!}</p>
-                    <p>Answered By:  </p>
+                    <p>Answered By: </p>
                     <form class="form" action="/questions/{{$question->id}}/comment" method="post">
                         @csrf
                         <div class="form-row d-flex justify-content-end">
@@ -57,7 +57,6 @@
                             <div class="col-1">
                                 <button type="submit" class="btn btn-primary" style=""><i class="fas fa-paper-plane"></i></button>
                             </div>
-                            {{-- <input class="form-control" type="hidden" name="answer_id" value="{{$answer->id}}"> --}}
                         </div>
                     </form>
                 </div>
@@ -69,7 +68,6 @@
     <form action="/questions/{id}" method="post">
         @csrf
         <div class="form-group">
-        <input class="form-control" type="hidden" name="question_id" value="{{$question->id}}">
         <textarea class="form-control my-editor" name="content">{!! old('content', $content ?? '') !!}</textarea>
         </div>
         <button type="submit" class="btn btn-primary" style="">Submit</button>
