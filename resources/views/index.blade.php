@@ -9,6 +9,7 @@
         <th scope="col">No</th>
         <th scope="col">Title</th>
         <th scope="col">Content</th>
+        <th scope="col">Total Vote</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -19,6 +20,7 @@
         <th scope="row" style="width: 5%">{{$loop->iteration}}</th>
         <td style="width: 20%">{{ $qst->title }}</td>
         <td>{!! $qst-> content !!}</td>
+        <td>{{$qst->votes->sum('upvote')-$qst->votes->sum('downvote')}}</td>
         <td style="width: 20%">
           <a class="btn btn-info" href="/questions/{{$qst->id}}" role="button">Detail</a>
           <a class="btn btn-warning" href="/questions/{{$qst->id}}/edit" role="button">Edit</a>

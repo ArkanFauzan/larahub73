@@ -8,8 +8,8 @@
     <meta name="author" content="">
 
     <!-- Link untuk menambah icon -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
+    <link rel="icon" href="https://cdn3.iconfinder.com/data/icons/ecommerce-shopping-4/64/x-33-512.png">
+    
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -56,11 +56,11 @@
                 <hr class="sidebar-divider my-0">
           
                 <!-- Nav Item - Dashboard -->
-                <li class="nav-item">
-                  <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-                </li>
+                {{-- <li class="nav-item">
+                  <a class="nav-link" href="/login">
+                   
+                    <span>Login</span></a>
+                </li> --}}
           
                 <!-- Divider -->
                 <hr class="sidebar-divider">
@@ -114,7 +114,7 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Forums</span>
+                    <span>Menu</span>
                   </a>
                   <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -125,8 +125,8 @@
                       <div class="collapse-divider"></div>
                       <h6 class="collapse-header">Other Pages:</h6> -->
                       
-                      <a class="collapse-item active" href="blank.html">Questions & Answers</a>
-                      <a class="collapse-item" href="404.html">404 Page</a>
+                      <a class="collapse-item" href="/questions/index">Index</a>
+                      <a class="collapse-item" href="/questions/create">Create</a>
                     </div>
                   </div>
                 </li>

@@ -22,4 +22,8 @@ class Question extends Model
     public function votes(){
         return $this->hasMany('App\QuestionVotes');
     }
+
+    public function correct_answer(){
+        return $this->hasOne('App\CorrectAnswer');
+    }
 }

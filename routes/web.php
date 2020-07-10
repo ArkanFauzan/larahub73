@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/downvote/question/{id}','VoteController@downvote_question');
     Route::post('/upvote/answer/{id}','VoteController@upvote_answer');
     Route::post('/downvote/answer/{id}','VoteController@downvote_answer');
+
+    Route::post('/questions/answer/{id}', 'CorrectAnswerController@store');
 });
 
 
