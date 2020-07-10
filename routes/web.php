@@ -28,8 +28,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/questions/{id}', 'AnswerController@store');
     Route::get('/questions/{id}/voteup', 'VoteController@voteup');
     Route::get('/questions/{id}/votedown', 'VoteController@votedown');
+
+    // route untuk comment
     Route::post('/comment/answer/{id}', 'CommentAnswerController@store');
     Route::post('/comment/question/{id}', 'CommentQuestionController@store');
+
+    // route untuk votes
+    Route::post('/upvote/question/{id}','VoteController@upvote_question');
+    Route::post('/downvote/question/{id}','VoteController@downvote_question');
 });
 
 

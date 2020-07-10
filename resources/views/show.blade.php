@@ -12,15 +12,38 @@
             <div class="card-body" style="padding-right: 0px;">
                 <div class="row">
                     <div class="col-1 border-right">
-                        <p>Vote: </p>
-                        <form action="/questions/{{$question->id}}/voteup" method="post">
-                            @csrf
-                            <button class="btn btn-primary"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
-                        </form>
-                        <form action="/questions/{{$question->id}}/votedown" method="post">
-                            @csrf
-                            <button class="btn btn-primary"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
-                        </form>
+                        <p>Vote: {{$question->votes->sum('upvote')-$question->votes->sum('downvote')}} </p>
+
+                        {{-- mengecek apakah user yg login sudah votes untuk pertanyaan tersebut atau belum --}}
+                        <?php $sudah_votes=false;?>
+                        @foreach ($question->votes as $votes)
+                            @if ($votes->user_id==Auth::user()->id)
+                                <?php $sudah_votes=true ;?>
+                            @endif
+                        @endforeach
+
+                        {{-- jika sudah votes atau pertanyaan tersebut dia sendiri yg buat, 
+                            maka tampilkan button tanpa submit (seperti button disabled) --}}
+                        @if ($sudah_votes==true or $question->user_id===Auth::user()->id)
+                            <button class="btn btn-secondary"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
+                            <button class="btn btn-secondary"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
+                        @else
+                            <form action="/upvote/question/{{$question->id}}" method="post">
+                                @csrf
+                                <button class="btn btn-primary"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
+                            </form>
+
+                            {{-- jika point user kurang dari 15, maka tidak bisa downvote, tampilkan button disabled --}}
+                            @if (Auth::user()->point->point < 15)
+                                <button class="btn btn-secondary"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
+                            @else
+                                <form action="/downvote/question/{{$question->id}}" method="post">
+                                    @csrf
+                                    <button class="btn btn-primary"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
+                                </form>
+                            @endif
+                        @endif
+                        
                     </div>
                     <div class="col-8">
                         <h5 class="card-title mb-4">Posted by: {{$question->user->name}} </h5>
@@ -45,7 +68,7 @@
                     @endforeach
                     <form class="form" action="/comment/question/{{$question->id}}" method="post">
                         @csrf
-                        <div class="form-row d-flex justify-content-end">
+                        <div class="form-row mt-4 d-flex justify-content-end">
                             
                             <div class="col-7">
                                 <input type="text" class="form-control" name="comment" placeholder="Tambahkan Komentar">
