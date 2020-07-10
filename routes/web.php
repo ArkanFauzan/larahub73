@@ -36,6 +36,8 @@ Route::group(['middleware' => 'auth'], function(){
     // route untuk votes
     Route::post('/upvote/question/{id}','VoteController@upvote_question');
     Route::post('/downvote/question/{id}','VoteController@downvote_question');
+    Route::post('/upvote/answer/{id}','VoteController@upvote_answer');
+    Route::post('/downvote/answer/{id}','VoteController@downvote_answer');
 });
 
 

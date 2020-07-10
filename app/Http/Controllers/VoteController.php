@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use Illuminate\Http\Request;
 use illuminate\support\Facades\Auth;
 
 use App\QuestionVotes;
 use App\Question;
 use App\Point;
+use App\AnswerVotes;
 
 class VoteController extends Controller
 {
@@ -44,5 +46,35 @@ class VoteController extends Controller
         $new_point = Point::where('user_id','=',Auth::user()->id)->update(['point'=>$point-1]);
 
         return redirect("questions/$id");
+    }
+
+    public function upvote_answer($id){
+        // membuat votes
+        $vote = AnswerVotes::firstOrCreate([
+            'upvote'=> 1,
+            'downvote'=> 0,
+            'answer_id'=> $id,
+            'user_id'=> Auth::user()->id,
+        ]);
+
+        //mengambil id pertanyaan
+        $id_pertanyaan = Answer::find($id)->question->id;
+
+        return redirect("questions/$id_pertanyaan");
+    }
+
+    public function downvote_answer($id){
+        // membuat votes
+        $vote = AnswerVotes::firstOrCreate([
+            'upvote'=> 0,
+            'downvote'=> 1,
+            'answer_id'=> $id,
+            'user_id'=> Auth::user()->id,
+        ]);
+
+        //mengambil id pertanyaan
+        $id_pertanyaan = Answer::find($id)->question->id;
+
+        return redirect("questions/$id_pertanyaan");
     }
 }

@@ -102,9 +102,43 @@
         <div class="row ml-4" style="">
             <div class="card mb-4" style="width: 100%;">
                 <div class="card-body">
-                    <p class="card-text" style="display: inline">{!! $jawab->content !!}</p>
-                    <p>Answered By: {{$jawab->user->name}}  </p>
-                    <p>Comments:</p>
+                    <div class="row">
+                        <div class="col-1 mb-4">
+                            <p>vote: {{$jawab->votes->sum('upvote')-$jawab->votes->sum('downvote')}} </p>
+
+                            {{-- mengecek apakah user yg login sudah votes untuk pertanyaan tersebut atau belum --}}
+                            <?php $sudah_votes=false;?>
+                            
+                            @foreach ($jawab->votes as $votes)
+                                @if ($votes->user_id==Auth::user()->id)
+                                    <?php $sudah_votes=true ;?>
+                                @endif
+                            @endforeach
+
+                            {{-- jika sudah votes atau jawaban tersebut dia sendiri yg buat, 
+                                maka tampilkan button tanpa submit (seperti button disabled) --}}
+                            @if ($sudah_votes==true or $jawab->user_id===Auth::user()->id)
+                                <button class="btn btn-secondary"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
+                                <button class="btn btn-secondary"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
+                            @else
+                                <form action="/upvote/answer/{{$jawab->id}}" method="post">
+                                    @csrf
+                                    <button class="btn btn-sm btn-primary"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br/>
+                                </form>
+
+                                <form action="/downvote/answer/{{$jawab->id}}" method="post">
+                                    @csrf
+                                    <button class="btn btn-sm btn-primary"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button><br/>
+                                </form>
+                            @endif
+                            
+                        </div>
+                        <div class="col-11 border-left">
+                            <p class="card-text" style="display: inline">{!! $jawab->content !!}</p>
+                            <p>Answered By: {{$jawab->user->name}}  </p>
+                        </div>
+                    </div>
+                    <p class="mt-4">Comments:</p>
 
                     {{-- menampilkan comment2 untuk setiap jawaban --}}
                     @foreach ($jawab->comment as $comment)
