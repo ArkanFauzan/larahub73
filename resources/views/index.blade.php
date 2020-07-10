@@ -11,7 +11,7 @@
         <th scope="col">Title</th>
         <th scope="col">Content</th>
         <th scope="col">Total Vote</th>
-        <th scope="col">Action</th>
+        <th scope="col" class="text-center">Action</th>
       </tr>
     </thead>
     <tbody>
