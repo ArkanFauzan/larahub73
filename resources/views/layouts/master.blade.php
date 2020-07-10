@@ -126,7 +126,7 @@
                       <h6 class="collapse-header">Other Pages:</h6> -->
                       
                       <a class="collapse-item" href="/questions/index">Index</a>
-                      <a class="collapse-item" href="/questions/create">Create</a>
+                      <a class="collapse-item" href="/create/question">Create</a>
                     </div>
                   </div>
                 </li>

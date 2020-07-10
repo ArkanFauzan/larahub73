@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-<a href="{{url('questions/create')}}" class="btn btn-primary mt-4 mb-4">Create New Question</a>
+<a href="/create/question" class="btn btn-primary mt-4 mb-4">Create New Question</a>
   <table class="table">
     <thead class="thead-dark">
       <tr>

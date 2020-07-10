@@ -56,7 +56,12 @@
                             {{-- jika point user kurang dari 15, maka tidak bisa downvote, tampilkan button disabled --}}
                             @if (Auth::user() !== null)
                                 @if (Auth::user()->point->point < 15)
-                                <button class="btn btn-secondary" onclick="kurangPoin()"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
+                                    <button class="btn btn-secondary" onclick="kurangPoin()"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
+                                @else
+                                    <form action="/downvote/question/{{$question->id}}" method="post">
+                                        @csrf
+                                        <button class="btn btn-primary"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
+                                    </form>
                                 @endif
                             @else
                                 <form action="/downvote/question/{{$question->id}}" method="post">

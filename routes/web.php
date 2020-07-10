@@ -21,7 +21,7 @@ Route::get('/questions/index', 'QuestionController@index');
 Route::get('/questions/{id}', 'QuestionController@show');
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('/questions/create', 'QuestionController@create');
+    Route::get('/create/question', 'QuestionController@create');
     Route::post('/questions', 'QuestionController@store');
     Route::put('/questions/{id}', 'QuestionController@update');
     Route::get('/questions/{id}/edit', 'QuestionController@edit');
