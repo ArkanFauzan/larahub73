@@ -14,7 +14,6 @@ class CreateCorrectAnswerTable extends Migration
     public function up()
     {
         Schema::create('correct_answer', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->unsignedBigInteger('question_id');
             $table->unsignedBigInteger('answer_id');
             $table->foreign('answer_id')->references('id')->on('answers')->onDelete('cascade');
