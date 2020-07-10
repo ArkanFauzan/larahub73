@@ -1,6 +1,17 @@
 @extends('layouts.master')
 @push('script-head')
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>
+    function alertVote(){
+        window.alert('Maaf, anda tidak bisa vote pertanyaan sendiri');
+    }
+    function udahVote(){
+        window.alert('Maaf, anda hanya bisa melakukan satu kali vote!');
+    }
+    function kurangPoin(){
+        window.alert('Maaf, anda membutuhkan 15 poin dulu untuk melakukan downvote');
+    }
+</script>
 @endpush
 @section('content')
 
@@ -24,9 +35,12 @@
 
                         {{-- jika sudah votes atau pertanyaan tersebut dia sendiri yg buat, 
                             maka tampilkan button tanpa submit (seperti button disabled) --}}
-                        @if ($sudah_votes==true or $question->user_id===Auth::user()->id)
-                            <button class="btn btn-secondary"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
-                            <button class="btn btn-secondary"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
+                        @if ($question->user_id===Auth::user()->id)
+                            <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
+                            <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
+                        @elseif ($sudah_votes==true)
+                            <button class="btn btn-secondary" onclick="udahVote()"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
+                            <button class="btn btn-secondary" onclick="udahVote()"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
                         @else
                             <form action="/upvote/question/{{$question->id}}" method="post">
                                 @csrf
@@ -35,7 +49,7 @@
 
                             {{-- jika point user kurang dari 15, maka tidak bisa downvote, tampilkan button disabled --}}
                             @if (Auth::user()->point->point < 15)
-                                <button class="btn btn-secondary"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
+                                <button class="btn btn-secondary" onclick="kurangPoin()"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
                             @else
                                 <form action="/downvote/question/{{$question->id}}" method="post">
                                     @csrf
