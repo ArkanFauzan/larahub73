@@ -19,6 +19,8 @@
 @endpush
 @section('content')
 
+<?php $Auth_user_id = isset(Auth::user()->id) ? Auth::user()->id : false ;?>
+
 <div class="container">
     <div class="card mt-4">
             <div class="card-header">
@@ -32,14 +34,14 @@
                         {{-- mengecek apakah user yg login sudah votes untuk pertanyaan tersebut atau belum --}}
                         <?php $sudah_votes=false;?>
                         @foreach ($question->votes as $votes)
-                            @if ($votes->user_id==Auth::user()->id)
+                            @if ($votes->user_id==$Auth_user_id)
                                 <?php $sudah_votes=true ;?>
                             @endif
                         @endforeach
 
                         {{-- jika sudah votes atau pertanyaan tersebut dia sendiri yg buat, 
                             maka tampilkan button tanpa submit (seperti button disabled) --}}
-                        @if ($question->user_id===Auth::user()->id)
+                        @if ($question->user_id===$Auth_user_id)
                             <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
                             <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
                         @elseif ($sudah_votes==true)
@@ -52,8 +54,10 @@
                             </form>
 
                             {{-- jika point user kurang dari 15, maka tidak bisa downvote, tampilkan button disabled --}}
-                            @if (Auth::user()->point->point < 15)
+                            @if (Auth::user() !== null)
+                                @if (Auth::user()->point->point < 15)
                                 <button class="btn btn-secondary" onclick="kurangPoin()"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
+                                @endif
                             @else
                                 <form action="/downvote/question/{{$question->id}}" method="post">
                                     @csrf
@@ -115,14 +119,14 @@
                                 <?php $sudah_votes=false;?>
                                 
                                 @foreach ($jawab->votes as $votes)
-                                    @if ($votes->user_id==Auth::user()->id)
+                                    @if ($votes->user_id==$Auth_user_id)
                                         <?php $sudah_votes=true ;?>
                                     @endif
                                 @endforeach
 
                                 {{-- jika sudah votes atau jawaban tersebut dia sendiri yg buat, 
                                     maka tampilkan button tanpa submit (seperti button disabled) --}}
-                                @if ($jawab->user_id===Auth::user()->id)
+                                @if ($jawab->user_id===$Auth_user_id)
                                     <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
                                     <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
                                 @elseif($sudah_votes==true)
@@ -146,7 +150,7 @@
                                 <p>Dijawab Oleh: {{$jawab->user->name}}  </p>
                             </div>
                             <div class="col-2 border-left d-flex justify-content-center">
-                                @if($question->correct_answer == null and Auth::user()->id == $question->user_id)
+                                @if($question->correct_answer == null and $Auth_user_id == $question->user_id)
                                     <form action="answer/{{$jawab->id}}" method="post">
                                         @csrf
                                         <p>Apakah jawaban ini paling membantu?</p>
@@ -193,14 +197,14 @@
                                     <?php $sudah_votes=false;?>
                                     
                                     @foreach ($jawab->votes as $votes)
-                                        @if ($votes->user_id==Auth::user()->id)
+                                        @if ($votes->user_id==$Auth_user_id)
                                             <?php $sudah_votes=true ;?>
                                         @endif
                                     @endforeach
 
                                     {{-- jika sudah votes atau jawaban tersebut dia sendiri yg buat, 
                                         maka tampilkan button tanpa submit (seperti button disabled) --}}
-                                    @if ($jawab->user_id===Auth::user()->id)
+                                    @if ($jawab->user_id===$Auth_user_id)
                                         <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
                                         <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
                                     @elseif($sudah_votes==true)
@@ -268,14 +272,14 @@
                                     <?php $sudah_votes=false;?>
                                     
                                     @foreach ($jawab->votes as $votes)
-                                        @if ($votes->user_id==Auth::user()->id)
+                                        @if ($votes->user_id==$Auth_user_id)
                                             <?php $sudah_votes=true ;?>
                                         @endif
                                     @endforeach
 
                                     {{-- jika sudah votes atau jawaban tersebut dia sendiri yg buat, 
                                         maka tampilkan button tanpa submit (seperti button disabled) --}}
-                                    @if ($jawab->user_id===Auth::user()->id)
+                                    @if ($jawab->user_id===$Auth_user_id)
                                         <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
                                         <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
                                     @elseif($sudah_votes==true)
@@ -338,8 +342,8 @@
             <input type="hidden" name="question_id" value="{{$question->id}}">
         </div>
         <div class="form-group">
-            @if(Auth::user()->id == $question->user_id)
-                <button type="submit" class="btn btn-primary" onclick="jawabSendiri()" style="width: 25%; margin-left: 18cm">Kirim</button>
+            @if($Auth_user_id == $question->user_id)
+                <span class="btn btn-primary" onclick="jawabSendiri()" style="width: 25%; margin-left: 18cm">Kirim</span>
             @else
                 <button type="submit" class="btn btn-primary" style="width: 25%; margin-left: 18cm">Kirim</button>
             @endif

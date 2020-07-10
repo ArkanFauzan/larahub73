@@ -12,12 +12,14 @@ use illuminate\support\Facades\Auth;
 class CorrectAnswerController extends Controller
 {
     public function store($id){
+        // mensetting jawaban terbaik
         $pertanyaan_id = Answer::find($id)->question->id;
         $correct_answer = CorrectAnswer::create([
             'question_id'=> $pertanyaan_id,
             'answer_id'=>$id
         ]);
-
+        
+        // menambahkan point bagi si pembuat jawaban
         $jawbaan_terbaik = Answer::find($id);
         $id_user = Answer::find($id)->user_id;
         $point_user = $jawbaan_terbaik->user->point->point + 15;

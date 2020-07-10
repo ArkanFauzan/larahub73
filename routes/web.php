@@ -18,13 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/questions/index', 'QuestionController@index');
+Route::get('/questions/{id}', 'QuestionController@show');
+
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/questions/create', 'QuestionController@create');
     Route::post('/questions', 'QuestionController@store');
     Route::put('/questions/{id}', 'QuestionController@update');
     Route::get('/questions/{id}/edit', 'QuestionController@edit');
     Route::delete('/questions/{id}', 'QuestionController@destroy');
-    Route::get('/questions/{id}', 'QuestionController@show');
     Route::post('/questions/{id}', 'AnswerController@store');
     Route::get('/questions/{id}/voteup', 'VoteController@voteup');
     Route::get('/questions/{id}/votedown', 'VoteController@votedown');
