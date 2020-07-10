@@ -117,9 +117,12 @@
 
                             {{-- jika sudah votes atau jawaban tersebut dia sendiri yg buat, 
                                 maka tampilkan button tanpa submit (seperti button disabled) --}}
-                            @if ($sudah_votes==true or $jawab->user_id===Auth::user()->id)
-                                <button class="btn btn-secondary"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
-                                <button class="btn btn-secondary"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
+                            @if ($jawab->user_id===Auth::user()->id)
+                                <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
+                                <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
+                            @elseif($sudah_votes==true)
+                                <button class="btn btn-secondary" onclick="udahVote()"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
+                                <button class="btn btn-secondary" onclick="udahVote()"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
                             @else
                                 <form action="/upvote/answer/{{$jawab->id}}" method="post">
                                     @csrf
