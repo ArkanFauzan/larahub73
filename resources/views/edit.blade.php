@@ -14,13 +14,17 @@
             <input class="form-control" id="isi" name="title" value="{{$question->title}}">
     
             <label class="mt-4" for="isi">Tag</label>
-            <input class="form-control" id="isi" name="tag" value="{{$question->tag}}">
-
+            @php
+                foreach ($question->tag as $value) {
+                  $arr[] = $value->tag_name;
+                }
+                $tagnya = implode(', ', $arr);
+            @endphp
+            
+            <input class="form-control" id="isi" name="tag" value="{{$tagnya}}">
             <label class="mt-4" for="isi">Content</label>
             <textarea class="form-control my-editor" id="isi" name="content">{{$question->content}}</textarea>
-    
             <button type="submit" class="btn btn-primary float-right mt-4">Update</button>
-    
         </div>
         </div>
     </form>

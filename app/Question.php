@@ -30,4 +30,5 @@ class Question extends Model
     public function tag(){
         return $this->belongsToMany('App\Tag');
     }
+
 }

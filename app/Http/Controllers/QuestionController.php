@@ -89,8 +89,23 @@ class QuestionController extends Controller
         $question = Question::find($id);
         $question->title = $request['title'];
         $question->content = $request['content'];
-        $question->tag = $request['tag'];
 
+        $tagArr = explode(', ', $request['tag']);
+        $tagMulti = [];
+
+        foreach ($tagArr as $strTag){
+            $tagArrAsc['tag_name'] = $strTag;
+            $tagMulti[] = $tagArrAsc;
+        }
+
+        foreach ($tagMulti as $value){
+            $arrTag[] = $value;
+        }
+
+        $arrId = $question->tag()->pluck('tags.id');
+        foreach ($question->tag as $key => $value){
+            Tag::where('id','=',$arrId[$key])->update(['tag_name'=> $arrTag[$key]['tag_name']]);
+        }
         $question->save();
         return redirect('/questions/index');
     }
