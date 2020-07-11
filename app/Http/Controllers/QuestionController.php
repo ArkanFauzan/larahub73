@@ -8,6 +8,7 @@ use Illuminate\support\Facades\DB;
 use App\Question;
 use App\Answer;
 use App\User;
+use App\Tag;
 
 // untuk firstOrCreate tabel point untuk user terkait
 // ditaruh di index
@@ -47,13 +48,25 @@ class QuestionController extends Controller
     }
 
     public function store(Request $request){
-        $new_question = new Question;
-        $new_question->title = $request['title'];
-        $new_question->content = $request['content'];
-        $new_question->tag = $request['tag'];
-        $new_question->user_id = Auth::user()->id;
+        $new_question = Question::Create([
+        'title' => $request['title'],
+        'content' => $request['content'],
+        'user_id' => Auth::user()->id
+        ]);
+        
+        $tagArr = explode(', ', $request['tag']);
+        $tagMulti = [];
 
-        $new_question->save();
+        foreach ($tagArr as $strTag){
+            $tagArrAsc['tag_name'] = $strTag;
+            $tagMulti[] = $tagArrAsc;
+        }
+
+        foreach ($tagMulti as $tagCheck){
+            $tags = Tag::firstOrCreate($tagCheck);
+            $new_question->tag()->attach($tags->id);
+        }
+
         return redirect('questions/index');
 
 

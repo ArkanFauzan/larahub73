@@ -26,4 +26,8 @@ class Question extends Model
     public function correct_answer(){
         return $this->hasOne('App\CorrectAnswer');
     }
+
+    public function tag(){
+        return $this->belongsToMany('App\Tag');
+    }
 }

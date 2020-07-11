@@ -75,12 +75,9 @@
                     <div class="col-8">
                         <h5 class="card-title mb-4">Diposting oleh: {{$question->user->name}} </h5>
                         <p class="card-text">Isi: <br>{!!$question->content!!}</p>
-                        <?php 
-                            $misah = explode(", ", $question->tag);
-                            foreach ($misah as $ms){
-                                echo '<button class="btn btn-success mt-4">' . $ms . '</button>' . ' ';
-                            }
-                        ?>
+                        @foreach ($question->tag as $tag)
+                            <button class="btn btn-success">{{$tag->tag_name}}</button>
+                        @endforeach
                     </div>
                     <div class="col-3 border-left">
                         <p>Tanggal dibuat: {{$question->created_at}}</p>

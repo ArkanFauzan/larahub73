@@ -9,15 +9,15 @@
     @csrf
   <div class="row justify-content-md-center">
     <div class="col-md-8">
-      <label class="mt-4" for="isi">Title</label>
-      <input class="form-control" id="isi" name="title" placeholder="Enter Title">
+      <label class="mt-4" for="isi">Judul</label>
+      <input class="form-control" id="isi" name="title" placeholder="Masukkan Judul">
 
       <label class="mt-4" for="isi">Tag</label>
-      <input class="form-control" id="isi" name="tag" placeholder="Enter Tag (*Separate with comma, ex: Tag1, Tag2)">
-      <label class="mt-4" for="isi">Content</label>
+      <input class="form-control" id="isi" name="tag" placeholder="Masukkan Tag (*Pisahkan dengan koma, contoh: Tag1, Tag2, Tag3, dst)">
+      <label class="mt-4" for="isi">Isi</label>
       <textarea class="form-control my-editor" id="isi" name="content">{!! old('content', $content ?? '') !!}</textarea>
 
-      <button type="submit" class="btn btn-primary float-right mt-4">Submit</button>
+      <button type="submit" class="btn btn-primary float-right mt-4">Kirim</button>
 
     </div>
   </div>

@@ -8,10 +8,10 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">No</th>
-        <th scope="col">Title</th>
-        <th scope="col">Content</th>
+        <th scope="col">Judul</th>
+        <th scope="col">Isi</th>
         <th scope="col">Total Vote</th>
-        <th scope="col" class="text-center">Action</th>
+        <th scope="col" class="text-center">Aksi</th>
       </tr>
     </thead>
     <tbody>
