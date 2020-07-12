@@ -41,7 +41,7 @@
 
                         {{-- jika sudah votes atau pertanyaan tersebut dia sendiri yg buat, 
                             maka tampilkan button tanpa submit (seperti button disabled) --}}
-                        @if ($question->user_id===$Auth_user_id)
+                        @if ($question->user_id==$Auth_user_id)
                             <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
                             <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
                         @elseif ($sudah_votes==true)
@@ -128,7 +128,7 @@
 
                                 {{-- jika sudah votes atau jawaban tersebut dia sendiri yg buat, 
                                     maka tampilkan button tanpa submit (seperti button disabled) --}}
-                                @if ($jawab->user_id===$Auth_user_id)
+                                @if ($jawab->user_id==$Auth_user_id)
                                     <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
                                     <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
                                 @elseif($sudah_votes==true)
@@ -206,7 +206,7 @@
 
                                     {{-- jika sudah votes atau jawaban tersebut dia sendiri yg buat, 
                                         maka tampilkan button tanpa submit (seperti button disabled) --}}
-                                    @if ($jawab->user_id===$Auth_user_id)
+                                    @if ($jawab->user_id==$Auth_user_id)
                                         <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
                                         <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
                                     @elseif($sudah_votes==true)
@@ -262,7 +262,7 @@
             @endforeach
             {{-- menampilkan sisa jawaban selain jawaban terbaik --}}
             @foreach ($answers as $jawab)
-            @if ($question->correct_answer->answer_id !== $jawab->id)
+            @if ($question->correct_answer->answer_id != $jawab->id)
                 <div class="row ml-4" style="">
                     <div class="card mb-4" style="width: 100%;">
                         <div class="card-body">
@@ -281,7 +281,7 @@
 
                                     {{-- jika sudah votes atau jawaban tersebut dia sendiri yg buat, 
                                         maka tampilkan button tanpa submit (seperti button disabled) --}}
-                                    @if ($jawab->user_id===$Auth_user_id)
+                                    @if ($jawab->user_id==$Auth_user_id)
                                         <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-up"></i></button><br><br>
                                         <button class="btn btn-secondary" onclick="alertVote()"><i class="fas fa-2x fa-arrow-alt-circle-down"></i></button>
                                     @elseif($sudah_votes==true)
