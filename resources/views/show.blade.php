@@ -176,7 +176,7 @@
                                     <input type="text" class="form-control mt-4" name="comment" placeholder="Tambahkan Komentar">
                                 </div>
                                 <div class="col-1">
-                                
+                                    <button type="submit" class="btn btn-primary mt-4" style=""><i class="fas fa-paper-plane"></i></button>
                                 </div>
                             </div>
                         </form>
@@ -251,7 +251,7 @@
                                         <input type="text" class="form-control mt-4" name="comment" placeholder="Tambahkan Komentar">
                                     </div>
                                     <div class="col-1">
-                                    
+                                        <button type="submit" class="btn btn-primary mt-4" style=""><i class="fas fa-paper-plane"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -325,7 +325,7 @@
                                         <input type="text" class="form-control mt-4" name="comment" placeholder="Tambahkan Komentar">
                                     </div>
                                     <div class="col-1">
-                                    
+                                        <button type="submit" class="btn btn-primary mt-4" style=""><i class="fas fa-paper-plane"></i></button>
                                     </div>
                                 </div>
                             </form>

@@ -86,10 +86,16 @@ class QuestionController extends Controller
     }
 
     public function update($id, Request $request){
+
+        // ambil nilai input pertanyaan
         $question = Question::find($id);
         $question->title = $request['title'];
         $question->content = $request['content'];
 
+        // hapus data di tabel perantara question_tag untuk pertanyaan_id = $id
+        DB::table('question_tag')->where('question_id','=',$id)->delete();
+
+        // pecah request tag berdasarkan ", "
         $tagArr = explode(', ', $request['tag']);
         $tagMulti = [];
 
@@ -98,15 +104,15 @@ class QuestionController extends Controller
             $tagMulti[] = $tagArrAsc;
         }
 
-        foreach ($tagMulti as $value){
-            $arrTag[] = $value;
+        // ikat atau attach pertanyaan dengan setiap tag-tagnya
+        foreach ($tagMulti as $tagCheck){
+            $tags = Tag::firstOrCreate($tagCheck);
+            $question->tag()->attach($tags->id);
         }
 
-        $arrId = $question->tag()->pluck('tags.id');
-        foreach ($question->tag as $key => $value){
-            Tag::where('id','=',$arrId[$key])->update(['tag_name'=> $arrTag[$key]['tag_name']]);
-        }
+        // save nilai pertanyaan yang baru
         $question->save();
+
         return redirect('/questions/index');
     }
 
