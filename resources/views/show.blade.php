@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @push('script-head')
-<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/qjvmcn9ayqiy33ts51urklmpnfrk7du450ywpxzxtv478g4q/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
     function alertVote(){
         window.alert('Maaf, anda tidak bisa vote milik anda sendiri');
